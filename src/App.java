@@ -5,6 +5,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
 public class App extends JFrame implements ActionListener{
@@ -39,7 +41,19 @@ public class App extends JFrame implements ActionListener{
         Calculator calculator = new Calculator();
 
         if(objSource == btnGO){
-           calculator.outputOdd(Integer.parseInt(value));        
+            calculator.divideBy3(Float.parseFloat(value));
+            ArrayList<Float> divideBy3 = calculator.getDivideBy3();
+            int[] odd = calculator.outputOdd(Integer.parseInt(value));
+            int gcf = calculator.gcf(Integer.parseInt(value));    
+            
+            if(gcf == 0 ||  gcf == 1){
+                txaOutput.setText(divideBy3 + " \n" + Arrays.toString(odd) + "\n" + "Prime Number");
+
+            }
+            else{
+
+            txaOutput.setText(divideBy3 + " \n" + Arrays.toString(odd) + "\n" + gcf);
+            }
         }
     }
 }
